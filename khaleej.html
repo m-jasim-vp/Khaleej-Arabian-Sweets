@@ -1,0 +1,893 @@
+button<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Khaleej Sweets</title>
+  <style>
+
+/* Round Product Plate */
+.round-products {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 50px;
+  flex-wrap: wrap;
+}
+
+.round-products img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.round-products img:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+}
+
+
+
+    :root {
+      --dark: #151515;   /* Very Dark Gray */
+      --brown: #6F1701;  /* Dark Reddish Brown */
+      --gold: #F3A104;   /* Golden Orange */
+      --olive: #ADB809;  /* Olive Green */
+      --sand: #FFF0D9;   /* Light Cream */
+    }
+
+    body {
+      background: var(--sand);
+      font-family: 'Hidayatullah', sans-serif;
+      margin: 0;
+      color: var(--dark);
+    }
+
+
+    /* Splash Screen Styles */
+#splash {
+  position: fixed;
+  inset: 0;
+  background: var(--dark); /* your #151515 dark bg */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  animation: fadeOut 2s ease 2s forwards; /* waits 2s, then fades out */
+}
+
+#splash img {
+  width: 220px; /* adjust size */
+  opacity: 0;
+  transform: scale(0.8);
+  animation: logoIn 1.5s ease forwards;
+}
+
+/* Logo zoom + fade-in */
+@keyframes logoIn {
+  from { opacity: 0; transform: scale(0.5); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Fade-out screen */
+@keyframes fadeOut {
+  to { opacity: 0; visibility: hidden; }
+}
+
+
+/* Controls as Buttons */
+.controls {
+  text-align: center;
+  margin: 30px 0;
+}
+
+.filter-btn {
+  background: var(--gold);
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  margin: 5px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.filter-btn:hover {
+  background: var(--brown);
+  transform: translateY(-2px);
+}
+
+.filter-btn.active {
+  background: var(--olive);
+}
+
+
+    /* Navbar */
+    .navbar {
+      background: var(--sand);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    .navbar a {
+      color: var(--brown);
+      font-weight: bold;
+      margin: 0 12px;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    .navbar a:hover {
+      color: var(--gold);
+    }
+
+    /* Hero */
+    .hero {
+      background: url('dessert2.jpg') center/cover no-repeat;
+      color: #fff;
+      text-align: center;
+      padding: 100px 20px;
+    }
+    .hero h1 {
+      font-size: 3rem;
+      color: var(--sand);
+    }
+    .hero p {
+      font-size: 1.3rem;
+    }
+    .hero .btn-primary {
+      margin-top: 20px;
+    }
+
+
+    /* Search Bar */
+.search {
+  text-align: center;
+  margin: 20px 0 30px;
+}
+
+.search input {
+  width: 60%;
+  max-width: 400px;
+  padding: 12px 18px;
+  font-size: 1rem;
+  border: 2px solid var(--gold);
+  border-radius: 25px;
+  outline: none;
+  transition: all 0.3s ease;
+  background: #fff;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.search input:focus {
+  border-color: var(--brown);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+}
+
+
+.btn-whatsapp {
+  background: #25D366;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+.btn-whatsapp:hover {
+  background: #128C7E;
+}
+
+
+
+/* Instagram Button */
+.insta-btn {
+  display: inline-block;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  overflow: hidden;
+/*  background: linear-gradient(45deg, #f9ce34, #ee2a7b, #6228d7);*/
+  padding: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.insta-btn img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.insta-btn:hover {
+  transform: scale(1.2) rotate(10deg);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+
+
+
+    /* Buttons */
+    .btn-primary {
+      background: var(--gold);
+      color: #fff;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .btn-primary:hover {
+      background: var(--brown);
+    }
+
+    /* Sections */
+    section {
+      padding: 60px 20px;
+    }
+    .section-title {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 40px;
+      color: var(--sand);
+    }
+
+    /* Product Grid */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+    }
+    .card {
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+      padding: 15px;
+      transition: transform 0.3s;
+    }
+    .card:hover {
+      transform: translateY(-6px);
+    }
+    .card img {
+  width: 100%;
+  height: 200px;          /* fixed height (you can adjust) */
+  object-fit: cover;      /* ensures image fills without distortion */
+  border-radius: 12px;
+}
+
+    .card .title {
+      color: var(--brown);
+      font-size: 1.3rem;
+      margin: 10px 0 6px;
+    }
+    .card .muted {
+      color: #555;
+    }
+    .card .price-tag {
+      color: var(--gold);
+      font-weight: bold;
+      margin-top: 8px;
+    }
+
+    /* About Us */
+    .about p {
+  text-align: left;
+}
+    .about {
+      background: var(--sand);
+    }
+    .about-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+      max-width: 1100px;
+      margin: auto;
+    }
+    .about-image img {
+      width: 100%;
+      border-radius: 18px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+    }
+    .about-text h3 {
+      font-size: 1.6rem;
+      margin-bottom: 15px;
+      color: var(--olive);
+    }
+    .about-text p {
+      margin-bottom: 15px;
+      line-height: 1.6;
+      color: #333;
+    }
+
+    /* Contact */
+    .contact {
+      background: #ADB809;
+      text-align: center;
+    }
+    .contact p {
+      margin: 10px 0;
+            color: #333;
+
+    }
+    .contact a {
+      color: var(--sand);
+      font-weight: bold;
+      text-decoration: none;
+    }
+    .contact a:hover {
+      color: var(--sand);
+    }
+
+/* feedback */
+
+
+.feedback {
+  background: var(--cream);
+  padding: 50px 20px;
+  text-align: center;
+  border-top: 3px solid var(--gold);
+}
+
+.feedback h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: var(--brown);
+}
+
+.review-form, .review-list {
+  max-width: 600px;
+  margin: 20px auto;
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  text-align: left;
+}
+
+.review-form h3, .review-list h3 {
+  margin-bottom: 15px;
+  color: var(--brown);
+}
+
+.review-form input, 
+.review-form textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  border: 2px solid var(--gold);
+  border-radius: 8px;
+  outline: none;
+}
+
+.review-form textarea {
+  height: 100px;
+  resize: none;
+}
+
+.review-form button {
+  background: var(--gold);
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.review-form button:hover {
+  background: var(--brown);
+}
+
+/* Stars */
+.star-rating {
+  display: flex;
+  gap: 5px;
+  font-size: 1.5rem;
+  margin: 10px 0;
+  cursor: pointer;
+  color: #ccc;
+}
+
+.star-rating .selected {
+  color: gold;
+}
+
+/* Review Display */
+.review {
+  border-bottom: 1px solid #eee;
+  padding: 10px 0;
+}
+
+.review strong {
+  color: var(--olive);
+}
+
+
+  </style>
+</head>
+<body>
+
+
+  <!-- Splash Screen -->
+<div id="splash">
+  <img src="C:\Users\M S I\Desktop\G_raph\khaleej\KASname1.png" alt="Khaleej Sweets Logo">
+</div>
+
+
+<!-- Navbar -->
+  <div class="navbar">
+    <div class="logo"><a href="#home">Khaleej Sweets</a></div>
+    <div class="nav-links">
+      <a href="#home">Home</a>
+      <a href="#products">Products</a>
+      <a href="#about">About Us</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+
+  <!-- Hero -->
+  <section class="hero" id="home">
+    <h1>Welcome to Khaleej Sweets</h1>
+    <p>Authentic Arabian Desserts with a Modern Touch</p>
+
+    <div class="round-products">
+    <img src="baklava1.jpg" alt="Baklava" onclick="openPreview(this.src)">
+    <img src="kunafa1.jpg" alt="Kunafa" onclick="openPreview(this.src)">
+    <img src="maamoul1.jpg" alt="Maamoul" onclick="openPreview(this.src)">
+    <img src="basbousa1.jpg" alt="Basbousa" onclick="openPreview(this.src)">
+  </div>
+
+
+    <button class="btn-primary" onclick="window.location.href='#products'">Order Now</button>
+    <button class="btn-whatsapp" 
+  onclick="window.location.href='https://wa.me/7356142700?text=Hello%20Khaleej%20Sweets,%20I%20would%20like%20to%20place%20an%20order.'">
+  Chat on WhatsApp
+</button>
+
+<a href="https://instagram.com/khaleej_arabian_sweets00" target="_blank" class="insta-btn">
+  <img src="instagram1.png" alt="Instagram" />
+</a>
+
+
+
+<section id="products">
+  <h2 class="section-title">Our Products</h2>
+
+ 
+
+
+<!-- Product Controls -->
+<section class="controls">
+  <button class="filter-btn active" data-category="all">All</button>
+  <button class="filter-btn" data-category="Baklava">Baklava</button>
+  <button class="filter-btn" data-category="Kunafa">Kunafa</button>
+  <button class="filter-btn" data-category="Maamoul">Maamoul</button>
+  <button class="filter-btn" data-category="Basbousa">Basbousa</button>
+  <button class="filter-btn" data-category="Tulumba">Tulumba</button>
+
+ <!-- Search bar -->
+  <div class="search">
+    <input type="text" id="searchBar" placeholder="🔍 Search desserts...">
+  </div>
+
+  <!-- Product Grid -->
+
+  <section class="grid"id="products">
+    <div class="card" data-category="Baklava">
+      <div class="thumb">
+        <img src="baklava1.jpg" alt="Baklava">
+        <div class="price-tag">700₹</div>
+      </div>
+      <div class="card-body">
+        <div class="title">Baklava</div>
+        <div class="muted"> Filled with chopped Nuts</div>
+       <div class="card-actions">
+  <button class="btn btn-primary" onclick="showDetails('Baklava', 'Baklava is a rich, sweet dessert pastry made of many thin layers of phyllo (filo) dough, filled with chopped nuts (often walnuts, pistachios, or almonds) and soaked in a sweet syrup or honey. Its a popular and traditional dessert in the Middle East, Mediterranean, and Balkan regions, with its origins tied to the Ottoman Empire, where it was a luxury treat', '650₹', 'baklava1.jpg')">Learn More</button>
+</div>
+      </div>
+    </div>
+
+ <div class="card" data-category="Kunafa">
+      <div class="thumb">
+        <img src="kunafa1.jpg" alt="Kunafa">
+        <div class="price-tag">700₹</div>
+      </div>
+      <div class="card-body">
+        <div class="title">Kunafa</div>
+        <div class="muted">sweet cheese or cream filling</div>
+       <div class="card-actions">
+  <button class="btn btn-primary" onclick="showDetails('Kunafa', 'Kunafa is a beloved Middle Eastern and Mediterranean dessert featuring layers of kataifi (shredded phyllo dough) or semolina, a sweet cheese or cream filling, and a fragrant sugar syrup, often flavored with rose or orange blossom water. Baked until golden and crisp, it is typically topped with crushed pistachios or other nuts and symbolizes joy and togetherness, particularly during festive occasions like Ramadan. While the exact spelling and preparation vary by region, its signature combination of crispy pastry, gooey filling, and sweet syrup makes it a popular and versatile treat across cultures.', '650₹', 'Kunafa1.jpg')">Learn More</button>
+</div>
+      </div>
+ </div>
+
+     <div class="card" data-category="Maamoul">
+      <div class="thumb">
+        <img src="maamoul1.jpg" alt="Maamoul">
+        <div class="price-tag">700₹</div>
+      </div>
+      <div class="card-body">
+        <div class="title">Maamoul</div>
+        <div class="muted"> filled with date paste, chopped pistachios, or chopped walnuts</div>
+       <div class="card-actions">
+  <button class="btn btn-primary" onclick="showDetails('Maamoul', 'Maamoul are small, ancient Levantine shortbread cookies, often dusted with powdered sugar, made from a semolina or semolina-and-flour dough flavored with rosewater or orange blossom water, and traditionally filled with date paste, chopped pistachios, or chopped walnuts. These cookies are a staple of festive occasions for Christians, Muslims, and Jews, such as Easter, Eid al-Fitr, and Hanukkah. Before baking, the dough is pressed into decorative wooden molds called qalabs, or shaped by hand, to create distinct patterns and shapes that often indicate the filling inside.', '650₹', 'maamoul1.jpg')">Learn More</button>
+</div>
+</div>
+    </div>
+
+
+    <div class="card" data-category="Basbousa">
+      <div class="thumb">
+        <img src="basbousa1.jpg" alt="Basbousa">
+        <div class="price-tag">200₹</div>
+      </div>
+      <div class="card-body">
+        <div class="title">Basbousa</div>
+        <div class="muted"> Sweet and nutty</div>
+       <div class="card-actions">
+  <button class="btn btn-primary" onclick="showDetails('Basbousa', 'Basbousa is a sweet, moist Middle Eastern and North African semolina cake soaked in a sugar syrup, often flavored with rose water or orange blossom water, and topped with almonds or coconut. It has a nutty and buttery flavor with a tender, crumbly texture that gets better over time as the syrup is absorbed. The cake is typically baked in a sheet pan and cut into squares or diamonds before being served.', '650₹', 'basbousa1.jpg')">Learn More</button>
+</div>
+
+      </div>
+    </div>
+
+    <div class="card" data-category="Tulumba">
+      <div class="thumb">
+        <img src="tulumba1.jpg" alt="Tulumba">
+        <div class="price-tag">200₹</div>
+      </div>
+      <div class="card-body">
+        <div class="title">Tulumba</div>
+        <div class="muted">a fried batter soaked in syrup</div>
+       <div class="card-actions">
+  <button class="btn btn-primary" onclick="showDetails('Tulumba', 'Tulumba is a fried batter soaked in syrup, similar to jalebis or churros. It is made from unleavened choux pastry dough (usually about 3 cm long) piped with a pastry bag using an open star or similar tip. It is first deep-fried to golden colour and then sugar-sweet syrup is poured over it when still hot. It is eaten cold.', '650₹', 'tulumba1.jpg')">Learn More</button>
+</div>
+
+      </div>
+    </div>
+
+    <div class="card" data-category="Luqaimat">
+      <div class="thumb">
+        <img src="luqaimat1.jpg" alt="Luqaimat">
+        <div class="price-tag">200₹</div>
+      </div>
+      <div class="card-body">
+        <div class="title">Luqaimat</div>
+        <div class="muted">dipped in date syrup, rolled in honey, or dusted with sugar</div>
+       <div class="card-actions">
+  <button class="btn btn-primary" onclick="showDetails('Luqaimat', 'Luqaimat is a kind of Arabic sweet dumpling that could be described as doughnuts made with yeast and fried to a beautiful golden brown color, then dipped in date syrup, rolled in honey, or dusted with sugar. The word Luqaimat (لقيمات in Arabic) literally means little bites', '650₹', 'luqaimat1.jpg')">Learn More</button>
+</div>
+
+      </div>
+    </div>
+  </section>
+
+
+
+ <!-- About Us -->
+  <section class="about" id="about">
+    <h2 class="section-title">About Us</h2>
+    <div class="about-content">
+      <div class="about-image">
+        <img src="desserts1.jpg" alt="Arabian Desserts">
+      </div>
+      <div class="about-text">
+        <h3>Welcome to Khaleej Sweets</h3>
+        <p>
+          At <strong>Khaleej Sweets</strong>, we celebrate the rich tradition of Arabian desserts. 
+          Since our humble beginnings, our mission has been simple: 
+          to bring the authentic taste of the Middle East to dessert lovers everywhere.
+        </p>
+        <p>
+          Every sweet is crafted with passion using premium ingredients — 
+          from golden pistachios and pure honey to delicate semolina and saffron. 
+          Our recipes are inspired by generations of tradition, but infused with a modern touch 
+          to satisfy today’s tastes.
+        </p>
+        <p>
+          Whether it’s <em>Baklava, Kunafa, Maamoul, Basbousa, or Tulumba</em>, 
+          each bite tells a story of warmth, culture, and togetherness. 
+          We believe desserts are more than just treats — 
+          they are a part of family gatherings, celebrations, and memories.
+        </p>
+        <button class="btn-primary" onclick="window.location.href='#products'">Explore Our Products</button>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- feedback  -->
+
+  <section id="feedback" class="feedback">
+  <h2 class="section-title">Customer Feedback</h2>
+
+  <!-- Review Form -->
+  <div class="review-form">
+    <h3>Write a Review</h3>
+    <input type="text" id="reviewerName" placeholder="Your Name">
+    <textarea id="reviewText" placeholder="Write your review..."></textarea>
+    
+    <!-- Star Rating -->
+    <div class="star-rating" id="starRating">
+      <span data-value="1">&#9733;</span>
+      <span data-value="2">&#9733;</span>
+      <span data-value="3">&#9733;</span>
+      <span data-value="4">&#9733;</span>
+      <span data-value="5">&#9733;</span>
+    </div>
+
+    <button onclick="submitReview()">Submit Review</button>
+  </div>
+
+  <!-- Review List -->
+  <div class="review-list">
+    <h3>Customer Reviews</h3>
+    <div id="reviewsContainer">
+      <p>No reviews yet. Be the first to share your feedback!</p>
+    </div>
+  </div>
+</section>
+
+
+    <!-- Contact -->
+    <section class="contact" id="contact">
+      <h2 class="section-title">Contact Us</h2>
+      <p>📍 Location: Cherur road,Channayil
+  Vengara, Malappuram, Kerala</p>
+      <p>📞 Phone: +91 73561 42700</p>
+      <p>📧 Email: info@khaleejsweets.com</p>
+      <p><a href="https://wa.me/7356142700" target="_blank">💬 Chat with us on WhatsApp</a></p>
+    </section>
+
+
+
+  <footer class="site">© 2025 Khaleej Sweets. All rights reserved.</footer>
+
+  <div id="product-modal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.7); justify-content:center; align-items:center; z-index:100;">
+  <div style="background:var(--panel); padding:20px; border-radius:18px; max-width:400px; width:90%; position:relative;">
+    <span style="position:absolute; top:10px; right:14px; cursor:pointer; font-weight:bold; color:var(--sand);" onclick="closeModal()">×</span>
+    <h3 id="modal-title" style="color:var(--gold); margin-top:0;"></h3>
+    <img id="modal-img" src="" alt="" style="width:100%; border-radius:12px; margin-bottom:10px;">
+    <p id="modal-desc" style="color:#d6cfc4;"></p>
+    <p id="modal-price" style="font-weight:800; color:var(--gold);"></p>
+  </div>
+</div>
+
+
+
+<script>
+function showDetails(name, desc, price, imgSrc) {
+  document.getElementById('modal-title').innerText = name;
+  document.getElementById('modal-desc').innerText = desc;
+  document.getElementById('modal-price').innerText = price;
+  document.getElementById('modal-img').src = imgSrc;
+  document.getElementById('product-modal').style.display = 'flex';
+}
+
+function closeModal() {
+  document.getElementById('product-modal').style.display = 'none';
+}
+</script>
+
+
+
+<script>
+  const searchBar = document.getElementById("searchBar");
+  const productCards = document.querySelectorAll(".card");
+
+  searchBar.addEventListener("keyup", function() {
+    const query = searchBar.value.toLowerCase();
+
+    productCards.forEach(card => {
+      const title = card.querySelector(".title").textContent.toLowerCase();
+      const desc = card.querySelector(".muted").textContent.toLowerCase();
+
+      if (title.includes(query) || desc.includes(query)) {
+        card.style.display = "block";
+      } else {
+        card.style.display = "none";
+      }
+    });
+  });
+</script>
+
+
+
+<script>
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const products = document.querySelectorAll('.card');
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      // remove active state from all
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const category = btn.dataset.category;
+
+      products.forEach(product => {
+        if (category === "all" || product.dataset.category === category) {
+          product.style.display = "block";
+        } else {
+          product.style.display = "none";
+        }
+      });
+    });
+  });
+</script>
+
+
+
+
+<script>
+  const chips = document.querySelectorAll('.chip');
+  const cards = document.querySelectorAll('.card');
+
+  chips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      // remove active class from all
+      chips.forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+
+      const category = chip.textContent.trim();
+
+      cards.forEach(card => {
+        if (category === 'All' || card.dataset.category === category) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+  });
+</script>
+
+
+
+<script>
+  window.addEventListener("load", () => {
+    const splash = document.getElementById("splash");
+    setTimeout(() => {
+      splash.style.display = "none";
+    }, 4000); // hides after 4 seconds
+  });
+</script>
+
+
+<script>
+  let selectedRating = 0;
+
+  // Handle star rating selection
+  const stars = document.querySelectorAll("#starRating span");
+  stars.forEach(star => {
+    star.addEventListener("click", () => {
+      selectedRating = star.getAttribute("data-value");
+      stars.forEach(s => s.classList.remove("selected"));
+      for (let i = 0; i < selectedRating; i++) {
+        stars[i].classList.add("selected");
+      }
+    });
+  });
+
+  // Submit Review
+  function submitReview() {
+    const name = document.getElementById("reviewerName").value;
+    const text = document.getElementById("reviewText").value;
+    const container = document.getElementById("reviewsContainer");
+
+    if (!name || !text || selectedRating == 0) {
+      alert("Please fill all fields and select a star rating!");
+      return;
+    }
+
+    // Create review element
+    const review = document.createElement("div");
+    review.classList.add("review");
+    review.innerHTML = `
+      <strong>${name}</strong> - ${"⭐".repeat(selectedRating)}<br>
+      <p>${text}</p>
+    `;
+
+    // Append to review list
+    if (container.querySelector("p")) container.innerHTML = "";
+    container.prepend(review);
+
+    // Reset form
+    document.getElementById("reviewerName").value = "";
+    document.getElementById("reviewText").value = "";
+    selectedRating = 0;
+    stars.forEach(s => s.classList.remove("selected"));
+  }
+</script>
+
+
+
+<!-- Preview Box -->
+<!-- Preview Box -->
+<div class="product-preview" id="previewBox">
+  <img id="previewImg" src="" alt="preview">
+</div>
+
+
+<style>
+.product-preview {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.product-preview.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* Preview Image */
+.product-preview img {
+  max-width: 80%;
+  max-height: 80%;
+  border-radius: 20px;
+  transform: scale(0.5);
+  transition: transform 0.4s ease;
+}
+
+.product-preview.active img {
+  transform: scale(1);
+}
+
+/* Close Button */
+.product-preview .close-btn {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 2.5rem;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 2100;
+  transition: transform 0.2s ease;
+}
+
+.product-preview .close-btn:hover {
+  transform: scale(1.2);
+  color: #F3A104; /* gold hover effect */
+}
+</style>
+<script>
+function openPreview(imgSrc) {
+  const previewBox = document.getElementById("previewBox");
+  const previewImg = document.getElementById("previewImg");
+  previewImg.src = imgSrc;
+  previewBox.classList.add("active");
+}
+
+// Close when clicking outside the image
+document.getElementById("previewBox").addEventListener("click", function(e) {
+  if (e.target.id === "previewBox") { 
+    this.classList.remove("active");
+  }
+});
+</script>
+
+
+
+
+
+</body>
+</html>
